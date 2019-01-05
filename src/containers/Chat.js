@@ -1,8 +1,7 @@
 import React from 'react';
-import {} from 'react-native';
 import ComingSoon from "../components/ComingSoon";
 
-class UserInfo extends React.Component {
+class Chat extends React.Component {
     render() {
         return (
             <ComingSoon/>
@@ -10,4 +9,4 @@ class UserInfo extends React.Component {
     }
 }
 
-export default UserInfo;
+export default Chat;

@@ -12,8 +12,8 @@ import Spinner from "react-native-loading-spinner-overlay";
 class Login extends React.Component {
 
     state = {
-        email: '',
-        password: ''
+        email: 'test@yahoo.com',
+        password: '123456789'
     };
 
     componentDidMount() {
@@ -28,7 +28,7 @@ class Login extends React.Component {
         }
         this.props.login(email, password,
             //onSuccess
-            () => this.props.navigation.navigate(Constants.Screens.USER_INFO),
+            () => this.props.navigation.navigate(Constants.Screens.MOVIES),
             //onError
             (err) => alert(err)
         );
@@ -43,7 +43,7 @@ class Login extends React.Component {
         }
         this.props.createUser(email, password,
             // onSuccess
-            () => this.props.navigation.navigate(Constants.Screens.USER_INFO),
+            () => alert("Registered successfully. Please login using email and password"),
             // onError
             (err) => alert(err)
         );

@@ -4,11 +4,13 @@ const Constants = {
     },
     Labels: {
         LOGIN: "Login",
-        REGISTER: "Register"
+        REGISTER: "Register",
+        MOVIES: "Movies"
     },
     Screens: {
         LOGIN: "Login",
-        USER_INFO: 'UserInfo'
+        MOVIES: "Movies",
+        CHAT: "Chat"
     }
 };
 

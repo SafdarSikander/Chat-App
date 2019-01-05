@@ -1,7 +1,7 @@
 import {ERROR, LOGIN, REGISTER} from "../actions/Types";
 
 const INITIAL_STATE = {
-    userInfo: null,
+    email: null,
     error: null
 };
 
@@ -9,13 +9,13 @@ export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case LOGIN:
             return {
-                ...state,
-                UserInfo: action.payload
+                email: action.payload.email,
+                error: null
             };
         case REGISTER:
             return {
-                ...state,
-                userInfo: action.payload
+                email: null,
+                error: null
             };
         case ERROR:
             console.log(action.payload);

@@ -1,9 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
 import {createAppContainer, createStackNavigator} from 'react-navigation';
-import ComingSoon from "../components/ComingSoon";
 import Login from "../containers/Login";
-import UserInfo from "../containers/UserInfo";
+import Movies from "../containers/Movies";
+import Chat from "../containers/Chat";
 
 const Navigator = createStackNavigator({
     Login: {
@@ -12,8 +11,14 @@ const Navigator = createStackNavigator({
             header: null
         }),
     },
-    UserInfo: {
-        screen: UserInfo,
+    Movies: {
+        screen: Movies,
+        navigationOptions: () => ({
+            header: null
+        }),
+    },
+    Chat: {
+        screen: Chat,
         navigationOptions: () => ({
             header: null
         }),
