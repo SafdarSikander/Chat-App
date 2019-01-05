@@ -1,9 +1,16 @@
 import React from 'react';
 import {View} from 'react-native';
+import {createAppContainer, createStackNavigator} from 'react-navigation';
 import ComingSoon from "../components/ComingSoon";
+import Login from "../containers/Login";
 
-export default () => (
-    <View style={{flex: 1}}>
-        <ComingSoon/>
-    </View>
-);
+const Navigator = createStackNavigator({
+    Login: {
+        screen: Login,
+        navigationOptions: () => ({
+            header: null
+        }),
+    }
+});
+
+export default createAppContainer(Navigator);
