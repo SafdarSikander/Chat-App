@@ -1,6 +1,7 @@
 import React from "react";
 import {View, StyleSheet} from 'react-native';
 import {Button as RNButton, Text} from 'native-base';
+import PropTypes from 'prop-types';
 
 const Button = (props) => (
     <View style={styles.container}>
@@ -18,5 +19,10 @@ const styles = StyleSheet.create({
         color: 'white'
     }
 });
+
+Button.propsTypes = {
+  title : PropTypes.string.isRequired,
+    onPress : PropTypes.func.isRequired
+};
 
 export default Button;

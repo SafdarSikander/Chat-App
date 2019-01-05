@@ -2,9 +2,13 @@ const Constants = {
     Icons: {
         COMING_SOON: require('../../assets/comingsoon.png'),
     },
-    Label: {
+    Labels: {
         LOGIN: "Login",
         REGISTER: "Register"
+    },
+    Screens: {
+        LOGIN: "Login",
+        USER_INFO: 'UserInfo'
     }
 };
 
