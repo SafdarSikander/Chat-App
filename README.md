@@ -1,2 +1,2 @@
 # Chat-App
-A simple app to discuss or chat about the movies.
+A simple React Native app to discuss or chat about the movies using firebase.
