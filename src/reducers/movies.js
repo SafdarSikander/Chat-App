@@ -14,6 +14,10 @@ export default (state = INITIAL_STATE, action) => {
                 allMovies: {..._.mapKeys(action.payload, 'rank')} // converting movies array to object
             };
         case FETCH_MOVIE:
+            return {
+                ...state,
+                selectedMovie: action.payload
+            };
         default:
             return state;
     }

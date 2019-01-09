@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const loadingIndicator = ({visible = false, textContent}) => (
     <Spinner
+        color='#334393'
         visible={visible}
         overlayColor='transparent'
         textContent={textContent}
@@ -14,7 +15,7 @@ const loadingIndicator = ({visible = false, textContent}) => (
 
 const styles = StyleSheet.create({
     spinnerTextStyle: {
-        color: '#FFF'
+        color: '#334393'
     },
 });
 

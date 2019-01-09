@@ -18,7 +18,6 @@ export default (state = INITIAL_STATE, action) => {
                 error: null
             };
         case ERROR:
-            console.log(action.payload);
             return {
                 ...state,
                 error: action.payload

@@ -1,12 +1,14 @@
 import React from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
-import {Container, Content, Form} from "native-base";
+import {Container, Form, Toast} from "native-base";
 import {connect} from 'react-redux';
 import TextField from "../components/TextField";
 import Button from "../components/Button";
 import Constants from "../utils/Constants";
 import {createUser, login} from '../actions';
-import Spinner from "react-native-loading-spinner-overlay";
+import Spinner from '../components/Spinner';
+
+// import Spinner from "react-native-loading-spinner-overlay";
 
 
 class Login extends React.Component {
@@ -15,10 +17,6 @@ class Login extends React.Component {
         email: 'test@yahoo.com',
         password: '123456789'
     };
-
-    componentDidMount() {
-        console.log(this.props.error)
-    }
 
     _onLogin = () => {
         const {email, password} = this.state;
@@ -30,7 +28,14 @@ class Login extends React.Component {
             //onSuccess
             () => this.props.navigation.navigate(Constants.Screens.MOVIES),
             //onError
-            (err) => alert(err)
+            (err) => {
+                Toast.show({
+                    text: `${err}`,
+                    buttonText: null,
+                    type: "danger",
+                    duration: 3000
+                });
+            }
         );
     };
 
@@ -38,51 +43,68 @@ class Login extends React.Component {
     _onRegister = () => {
         const {email, password} = this.state;
         if (!(email || password)) {
-            alert("Please enter email and password.");
+            Toast.show({
+                text: `Please enter username and password`,
+                buttonText: null,
+                type: "danger",
+                duration: 3000
+            });
             return;
         }
         this.props.createUser(email, password,
             // onSuccess
-            () => alert("Registered successfully. Please login using email and password"),
+            () => {
+                Toast.show({
+                    text: `Registered successfully. Please login using email and password`,
+                    buttonText: "Okay",
+                    type: "success",
+                    duration: 3000
+                });
+            },
             // onError
-            (err) => alert(err)
+            (err) => {
+                Toast.show({
+                    text: `${err}`,
+                    buttonText: null,
+                    type: "danger",
+                    duration: 3000
+                });
+            }
         );
     };
 
     render() {
         return (
             <Container>
-                <Content>
-                    <View style={styles.content}>
-                        <Form>
-                            <TextField
-                                label='Email'
-                                autoCorrect={false}
-                                autoCapitalize='none'
-                                value={this.state.email}
-                                onChangeText={(email) => this.setState({email})}
-                            />
-                            <TextField
-                                label='Password'
-                                secureTextEntry={true}
-                                autoCorrect={false}
-                                autoCapitalize='none'
-                                value={this.state.password}
-                                onChangeText={(password) => this.setState({password})}
-                            />
-                            <Button
-                                title={Constants.Labels.LOGIN}
-                                full rounded success
-                                onPress={() => this._onLogin()}
-                            />
-                            <Button
-                                title={Constants.Labels.REGISTER}
-                                full rounded primary
-                                onPress={() => this._onRegister()}
-                            />
-                        </Form>
-                    </View>
-                </Content>
+                <View style={styles.content}>
+                    <Form>
+                        <TextField
+                            label={Constants.Labels.EMAIL}
+                            autoCorrect={false}
+                            autoCapitalize='none'
+                            value={this.state.email}
+                            onChangeText={(email) => this.setState({email})}
+                        />
+                        <TextField
+                            label={Constants.Labels.PASSWORD}
+                            secureTextEntry={true}
+                            autoCorrect={false}
+                            autoCapitalize='none'
+                            value={this.state.password}
+                            onChangeText={(password) => this.setState({password})}
+                        />
+                        <Button
+                            title={Constants.Labels.LOGIN}
+                            full rounded success
+                            onPress={() => this._onLogin()}
+                        />
+                        <Button
+                            title={Constants.Labels.REGISTER}
+                            full rounded primary
+                            onPress={() => this._onRegister()}
+                        />
+                    </Form>
+                </View>
                 <Spinner visible={this.props.spinner.isLoading} textContent={this.props.spinner.text}/>
             </Container>
         )

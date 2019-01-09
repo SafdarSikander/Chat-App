@@ -4,27 +4,28 @@ import HeaderBackButton from "../components/HeaderBackButton";
 import Constants from "../utils/Constants";
 import Movie from "../components/Movie";
 import {connect} from 'react-redux';
-import {fetchMovies} from '../actions'
-import Spinner from "react-native-loading-spinner-overlay";
+import {fetchMovies, fetchMovie} from '../actions';
+
 
 class Movies extends React.Component {
 
 
     componentDidMount() {
         this.props.fetchMovies(
-            //onSuccess
-            () => console.log("movies downloaded"),
             // onError
             () => alert('Error while fetching movies')
         );
     }
 
     _onMovieSelect = (id) => {
-        alert(id);
+        this.props.fetchMovie(id,
+            //onSuccess
+            () => this.props.navigation.navigate(Constants.Screens.CHAT)
+        )
     };
 
     render() {
-        const {navigation, spinner, movies} = this.props;
+        const {navigation, movies} = this.props;
         return (
             <Container>
                 <Header>
@@ -46,21 +47,16 @@ class Movies extends React.Component {
                           }>
                     </List>
                 </Content>
-                <Spinner
-                    textContent={spinner.text}
-                    visible={spinner.isLoading}/>
             </Container>
         )
     }
 }
 
 const mapStateToProps = state => {
-    console.log(state.movies.allMovies);
     return {
         movies: Object.values(state.movies.allMovies), // converting movies object to array
         selectedMovie: state.movies.selectedMovie,
-        spinner: state.spinner
     }
 };
 
-export default connect(mapStateToProps, {fetchMovies})(Movies);
+export default connect(mapStateToProps, {fetchMovies, fetchMovie})(Movies);

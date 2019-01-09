@@ -5,7 +5,9 @@ const Constants = {
     Labels: {
         LOGIN: "Login",
         REGISTER: "Register",
-        MOVIES: "Movies"
+        MOVIES: "Movies",
+        EMAIL : 'Email',
+        PASSWORD : 'Password',
     },
     Screens: {
         LOGIN: "Login",
