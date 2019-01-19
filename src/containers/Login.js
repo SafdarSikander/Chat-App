@@ -14,8 +14,8 @@ import Spinner from '../components/Spinner';
 class Login extends React.Component {
 
     state = {
-        email: 'test@yahoo.com',
-        password: '123456789'
+        email: '',
+        password: ''
     };
 
     _onLogin = () => {
